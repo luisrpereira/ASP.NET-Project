@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://healthipcasoap.azurewebsites.net/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://healthipcasoap.azurewebsites.net/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://healthipcasoap.azurewebsites.net/">
+      <s:element name="DaConsultas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DaConsultasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DaConsultasResult" type="tns:ArrayOfConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Consulta" nillable="true" type="tns:Consulta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Consulta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Episodio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Processo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Especialidade" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DaConsultasTodas">
+        <s:complexType />
+      </s:element>
+      <s:element name="DaConsultasTodasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DaConsultasTodasResult" type="tns:ArrayOfConsulta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DaUtentesTodos">
+        <s:complexType />
+      </s:element>
+      <s:element name="DaUtentesTodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DaUtentesTodosResult" type="tns:ArrayOfUtente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUtente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Utente" nillable="true" type="tns:Utente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Utente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Processo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataNascimento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DaUtente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="numprocesso" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DaUtenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DaUtenteResult" type="tns:Utente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfConsulta" nillable="true" type="tns:ArrayOfConsulta" />
+      <s:element name="ArrayOfUtente" nillable="true" type="tns:ArrayOfUtente" />
+      <s:element name="Utente" nillable="true" type="tns:Utente" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DaConsultasSoapIn">
+    <wsdl:part name="parameters" element="tns:DaConsultas" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasSoapOut">
+    <wsdl:part name="parameters" element="tns:DaConsultasResponse" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasTodasSoapIn">
+    <wsdl:part name="parameters" element="tns:DaConsultasTodas" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasTodasSoapOut">
+    <wsdl:part name="parameters" element="tns:DaConsultasTodasResponse" />
+  </wsdl:message>
+  <wsdl:message name="DaUtentesTodosSoapIn">
+    <wsdl:part name="parameters" element="tns:DaUtentesTodos" />
+  </wsdl:message>
+  <wsdl:message name="DaUtentesTodosSoapOut">
+    <wsdl:part name="parameters" element="tns:DaUtentesTodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteSoapIn">
+    <wsdl:part name="parameters" element="tns:DaUtente" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteSoapOut">
+    <wsdl:part name="parameters" element="tns:DaUtenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasHttpGetIn">
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsulta" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasTodasHttpGetIn" />
+  <wsdl:message name="DaConsultasTodasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsulta" />
+  </wsdl:message>
+  <wsdl:message name="DaUtentesTodosHttpGetIn" />
+  <wsdl:message name="DaUtentesTodosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUtente" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteHttpGetIn">
+    <wsdl:part name="numprocesso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteHttpGetOut">
+    <wsdl:part name="Body" element="tns:Utente" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasHttpPostIn">
+    <wsdl:part name="data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsulta" />
+  </wsdl:message>
+  <wsdl:message name="DaConsultasTodasHttpPostIn" />
+  <wsdl:message name="DaConsultasTodasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfConsulta" />
+  </wsdl:message>
+  <wsdl:message name="DaUtentesTodosHttpPostIn" />
+  <wsdl:message name="DaUtentesTodosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUtente" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteHttpPostIn">
+    <wsdl:part name="numprocesso" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DaUtenteHttpPostOut">
+    <wsdl:part name="Body" element="tns:Utente" />
+  </wsdl:message>
+  <wsdl:portType name="HealthIPCAsoapSoap">
+    <wsdl:operation name="DaConsultas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe uma data (2019-12-18 ou 2019-12-19) como parâmetro e devolve uma lista de cosultas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasSoapIn" />
+      <wsdl:output message="tns:DaConsultasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todas as consultas agendadas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasTodasSoapIn" />
+      <wsdl:output message="tns:DaConsultasTodasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todos os utentes.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtentesTodosSoapIn" />
+      <wsdl:output message="tns:DaUtentesTodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe um número de processo como parâmetro e devolve os dados do utente respetivo.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtenteSoapIn" />
+      <wsdl:output message="tns:DaUtenteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HealthIPCAsoapHttpGet">
+    <wsdl:operation name="DaConsultas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe uma data (2019-12-18 ou 2019-12-19) como parâmetro e devolve uma lista de cosultas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasHttpGetIn" />
+      <wsdl:output message="tns:DaConsultasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todas as consultas agendadas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasTodasHttpGetIn" />
+      <wsdl:output message="tns:DaConsultasTodasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todos os utentes.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtentesTodosHttpGetIn" />
+      <wsdl:output message="tns:DaUtentesTodosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe um número de processo como parâmetro e devolve os dados do utente respetivo.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtenteHttpGetIn" />
+      <wsdl:output message="tns:DaUtenteHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HealthIPCAsoapHttpPost">
+    <wsdl:operation name="DaConsultas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe uma data (2019-12-18 ou 2019-12-19) como parâmetro e devolve uma lista de cosultas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasHttpPostIn" />
+      <wsdl:output message="tns:DaConsultasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todas as consultas agendadas.</wsdl:documentation>
+      <wsdl:input message="tns:DaConsultasTodasHttpPostIn" />
+      <wsdl:output message="tns:DaConsultasTodasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Devolve a lista de todos os utentes.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtentesTodosHttpPostIn" />
+      <wsdl:output message="tns:DaUtentesTodosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recebe um número de processo como parâmetro e devolve os dados do utente respetivo.</wsdl:documentation>
+      <wsdl:input message="tns:DaUtenteHttpPostIn" />
+      <wsdl:output message="tns:DaUtenteHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HealthIPCAsoapSoap" type="tns:HealthIPCAsoapSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DaConsultas">
+      <soap:operation soapAction="https://healthipcasoap.azurewebsites.net/DaConsultas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <soap:operation soapAction="https://healthipcasoap.azurewebsites.net/DaConsultasTodas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <soap:operation soapAction="https://healthipcasoap.azurewebsites.net/DaUtentesTodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <soap:operation soapAction="https://healthipcasoap.azurewebsites.net/DaUtente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HealthIPCAsoapSoap12" type="tns:HealthIPCAsoapSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DaConsultas">
+      <soap12:operation soapAction="https://healthipcasoap.azurewebsites.net/DaConsultas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <soap12:operation soapAction="https://healthipcasoap.azurewebsites.net/DaConsultasTodas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <soap12:operation soapAction="https://healthipcasoap.azurewebsites.net/DaUtentesTodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <soap12:operation soapAction="https://healthipcasoap.azurewebsites.net/DaUtente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HealthIPCAsoapHttpGet" type="tns:HealthIPCAsoapHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DaConsultas">
+      <http:operation location="/DaConsultas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <http:operation location="/DaConsultasTodas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <http:operation location="/DaUtentesTodos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <http:operation location="/DaUtente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HealthIPCAsoapHttpPost" type="tns:HealthIPCAsoapHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="DaConsultas">
+      <http:operation location="/DaConsultas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaConsultasTodas">
+      <http:operation location="/DaConsultasTodas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtentesTodos">
+      <http:operation location="/DaUtentesTodos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DaUtente">
+      <http:operation location="/DaUtente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HealthIPCAsoap">
+    <wsdl:port name="HealthIPCAsoapSoap" binding="tns:HealthIPCAsoapSoap">
+      <soap:address location="https://healthipcasoap.azurewebsites.net/HealthIPCAsoap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HealthIPCAsoapSoap12" binding="tns:HealthIPCAsoapSoap12">
+      <soap12:address location="https://healthipcasoap.azurewebsites.net/HealthIPCAsoap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HealthIPCAsoapHttpGet" binding="tns:HealthIPCAsoapHttpGet">
+      <http:address location="https://healthipcasoap.azurewebsites.net/HealthIPCAsoap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HealthIPCAsoapHttpPost" binding="tns:HealthIPCAsoapHttpPost">
+      <http:address location="https://healthipcasoap.azurewebsites.net/HealthIPCAsoap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
